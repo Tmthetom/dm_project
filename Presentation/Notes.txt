@@ -1,0 +1,11 @@
+Data preparation
+
+-> Pùvodnì 16 613 záznamù
+-> Validních dat: 2 121 záznamù
+-> 235 jedineèných výdavatelù
+-> 12 rùzných žánrù
+-> 26 rùzných platform
+
+-> Za posledních 5 let 513 záznamù
+
+Data evalutation
