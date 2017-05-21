@@ -1,0 +1,51 @@
+\documentclass[FM,ZP]{tulthesis}
+\usepackage[czech]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{pdfpages}
+\usepackage{graphicx}
+\usepackage{tikz}
+
+\TULtitle{Úloha 7 - Počet rozdílných bitů dvou vektorů}{}
+\TULprogramme{N2610}{Elektrotechnika a informatika}{Electrical Engineering and Informatics }
+\TULbranch{1802T007}{Informační technologie}{Information Technology}
+\TULauthor{Bc. Tomáš Moravec}
+\TULsupervisor{}
+\TULacad{2016/2017}
+
+\begin{document}
+\ThesisTitle{CZ}
+\renewcommand{\baselinestretch}{1.50}
+\setlength\parindent{1.2cm}
+\selectfont
+	
+\begingroup
+\renewcommand{\cleardoublepage}{}
+\renewcommand{\clearpage}{}
+\chapter{Zadání}
+\endgroup
+Navrhněte synchronní sekvenční obvod se dvěma jednobitovými vstupy X1 a X2. Obvod ukládá sekvenčně tyto dva vstupy do dvou n-bitových vektorů. Číslo n v rozsahu 1 až 8 je možné kdykoliv měnit opakovaných stiskem tlačítka (po hodnotě 8 následuje cyklicky hodnota 1). Výstupem je číslo udávající počet rozdílných bitů obou vektorů.
+	
+\begingroup
+\renewcommand{\cleardoublepage}{}
+\renewcommand{\clearpage}{}
+\newpage
+\chapter{Řešení úlohy}
+\endgroup
+Úloha byla na základě dporučení cvičícího rozdělena do bloků a následně řešena po jednotlivých částech.Výsledné bloky umožňují čtení vstupů, porovnávání hodnot a také výsledku zobrazení na segmentovkách.
+
+\section{Pulse}
+Tento blok má za vstup tlačítko a řeší, aby stiknutým tlačítkem byl vyslán pouze jediný pulz do klopného obvodu. Řešení bylo zhotoveno přes stavový automat.
+
+\section{Memory}
+Memory blok je zhotoven z dvoustupého klopného obvodu D a multiplexoru. Pokud není v multiplexoru adresní vstup v 1, tak se hodnota v obvodu D nemění, jinak je načtena hodnota nová.
+
+\section{Machine}
+Jedná se o automat, který má 8 stavů. V každém stavu je aktivní jiný výstup a je tak detekováno, jaké paměťové bloky se mají porovnat a sečíst. Z jednoho stavu do druhého se lze dostat jen při aktivním vstupu, jinak zůstavá v aktuálním stavu.
+
+\section{Sum}
+Úkolem tohoto velice jednoduchého bloku je zjištění počtu rozdílných biitů a to tak, že pomocí XOR získá stav 0 nebo 1, výsledné hodnoty se následně sečtou pomocí převodu bity na integer, integer na unsignet integer, následně proběhne sečtění a výsledek je převeden na std-logic-vector.
+	
+\section{Decoder-segm}
+Blok přijímá jedinou vstupní hodnotu a jeho výstupem je zobrazení čísla na sedmisegmentový displej.
+
+\end{document}
